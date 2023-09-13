@@ -5,7 +5,6 @@ public class Terminallogin {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Predefined login credentials
         String correctUsername = "Admin";
         String correctPassword = "tifast!";
 
@@ -14,13 +13,11 @@ public class Terminallogin {
         boolean isLoggedIn = false;
 
         do {
-            // Ask for username and password
             System.out.print("Enter username: ");
             String enteredUsername = scanner.nextLine();
             System.out.print("Enter password: ");
             String enteredPassword = scanner.nextLine();
-
-            // Check if the entered credentials match
+            
             if (enteredUsername.equals(correctUsername) && enteredPassword.equals(correctPassword)) {
                 System.out.println("Login successful. Welcome, " + correctUsername + "!");
                 isLoggedIn = true;
