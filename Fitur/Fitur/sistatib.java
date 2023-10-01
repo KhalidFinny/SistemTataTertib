@@ -13,6 +13,9 @@ public class sistatib {
         int nim, point, pointsblm, pointssdh;
         pointsblm = 0;
 
+        System.out.println("*****Silahkan masukkan data mahasiswa yang melanggar*****");
+        System.out.println("                                                          ");
+       
         System.out.print("Masukkan Nama Mahasiswa : ");
         nama = tatib.nextLine();
 
