@@ -2,15 +2,12 @@ package Fitur;
 
 import java.util.Scanner;
 
-/**
- * sistatib
- */
 public class sistatib {
 
     public static void main(String[] args) {
         Scanner tatib = new Scanner(System.in);
-        String nama, kelas, pelanggaran, prodi, jurusan, message1, message2;
-        String message3, message4, message5;
+        
+        String nama, kelas, pelanggaran, prodi, jurusan, message;
         int nim, point, pointsblm, pointssdh;
         pointsblm = 0;
 
@@ -42,68 +39,25 @@ public class sistatib {
 
         pointssdh = point + pointsblm;
 
-        message1 = "Selamat anda hanya mendapatkan kompensasi";
-        message2 = "Sayangnya anda mendapatkan hukuman kecil";
-        message3 = "Sayangnya anda mendapatkan hukuman BESAR";
-        message4 = "Sayang sekali anda mendapatkan hukuman BERAT";
-        message5 = "Waah dikeluarkan, better luck next time";
-
-        if (point > 0 && point <=10) {
-            System.out.println("Nama        : " +nama);
-            System.out.println("Kelas       : " +kelas);
-            System.out.println("NIM         : " +nim);
-            System.out.println("Prodi       : " +prodi);
-            System.out.println("Jurusan     : " +jurusan);
-            System.out.println("Pelanggaran : " +pelanggaran);
-            System.out.println("Point       : " +pointssdh);
-            System.out.println(message1);
-
-        elseif (point > 10 && point <=20); {
-            System.out.println("Nama        : " +nama);
-            System.out.println("Kelas       : " +kelas);
-            System.out.println("NIM         : " +nim);
-            System.out.println("Prodi       : " +prodi);
-            System.out.println("Jurusan     : " +jurusan);
-            System.out.println("Pelanggaran : " +pelanggaran);
-            System.out.println("Point       : " +pointssdh);
-            System.out.println(message2);
-            
-        }    
-        elseif (point > 20 && point <=30); {
-            System.out.println("Nama        : " +nama);
-            System.out.println("Kelas       : " +kelas);
-            System.out.println("NIM         : " +nim);
-            System.out.println("Prodi       : " +prodi);
-            System.out.println("Jurusan     : " +jurusan);
-            System.out.println("Pelanggaran : " +pelanggaran);
-            System.out.println("Point       : " +pointssdh);
-            System.out.println(message3);
-            
-        }
-         elseif (point > 30 && point <=40); {
-            System.out.println("Nama        : " +nama);
-            System.out.println("Kelas       : " +kelas);
-            System.out.println("NIM         : " +nim);
-            System.out.println("Prodi       : " +prodi);
-            System.out.println("Jurusan     : " +jurusan);
-            System.out.println("Pelanggaran : " +pelanggaran);
-            System.out.println("Point       : " +pointssdh);
-            System.out.println(message4);
-            
-        }
-            
+        if (point > 0 && point <= 10) {
+            message = "Selamat anda hanya mendapatkan kompensasi";
+        } else if (point > 10 && point <= 20) {
+            message = "Sayangnya anda mendapatkan hukuman kecil";
+        } else if (point > 20 && point <= 30) {
+            message = "Sayangnya anda mendapatkan hukuman BESAR";
+        } else if (point > 30 && point <= 40) {
+            message = "Sayang sekali anda mendapatkan hukuman BERAT";
         } else {
-            System.out.println("Nama        : " +nama);
-            System.out.println("Kelas       : " +kelas);
-            System.out.println("NIM         : " +nim);
-            System.out.println("Prodi       : " +prodi);
-            System.out.println("Jurusan     : " +jurusan);
-            System.out.println("Pelanggaran : " +pelanggaran);
-            System.out.println("Point       : " +pointssdh);
-            System.out.println(message5);   
+            message = "Waah dikeluarkan, better luck next time";
         }
-    }
 
-    private static void elseif(boolean b) {
+        System.out.println("Nama        : " + nama);
+        System.out.println("Kelas       : " + kelas);
+        System.out.println("NIM         : " + nim);
+        System.out.println("Prodi       : " + prodi);
+        System.out.println("Jurusan     : " + jurusan);
+        System.out.println("Pelanggaran : " + pelanggaran);
+        System.out.println("Point       : " + pointssdh);
+        System.out.println(message);
     }
 }

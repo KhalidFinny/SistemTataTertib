@@ -15,9 +15,11 @@ public class mainmenu {
             System.out.println("============ Main Menu ============");
             System.out.println("===================================");
             System.out.println("|1. Tambah data Mahsiswa          |");
-            System.out.println("|2. List Pelanggaran              |");
+            System.out.println("|2. Daftar Pelanggaran            |");
             System.out.println("|3. Point Pelanggaran             |");
-            System.out.println("|4. List Data                     |");
+            System.out.println("|4. Rieayat pelanggar             |");
+            System.out.println("|5. Status Tugas                  |");
+            System.out.println("|6. Daftar tugas kompen           |");
             System.out.println("|0. Keluar dari program           |");
             System.out.println("===================================");
             System.out.println("Pilih menu yang diinginkan: ");
@@ -27,7 +29,7 @@ public class mainmenu {
             if (pilihan == 1) {
                 sistatib.main(args);
                 break;
-                
+
             }
 
             else if (pilihan == 2) {
@@ -49,10 +51,10 @@ public class mainmenu {
                 System.out.println("41-50 = Dikeluarkan");
                 break;
             }
-            
+
             else if (pilihan == 4) {
-                System.out.println(" History Pelanggar: ");
-                
+                System.out.println("History Pelanggar: ");
+
             }
 
             if (pilihan == 0) {

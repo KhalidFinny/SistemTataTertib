@@ -59,7 +59,6 @@ public class Terminallogin {
         nim = sc1.nextInt();
         sc1.nextLine();
     
-
         System.out.print("Masukkan Kelas : ");
         kelas = sc1.nextLine();
 
@@ -74,7 +73,6 @@ public class Terminallogin {
 
         System.out.print("Masukkan Point yang Diterima : ");
         point = sc1.nextInt();
-        sc1.close();
 
         pointssdh = point + pointsblm;
 
@@ -98,7 +96,7 @@ public class Terminallogin {
         System.out.println("Pelanggaran : " + pelanggaran);
         System.out.println("Point       : " + pointssdh);
         System.out.println(message);
-                break;
+        break;
 
             }
 
@@ -109,7 +107,7 @@ public class Terminallogin {
                 System.out.println("3. Salto tanpa izin = 10");
                 System.out.println("4. Lari dari kenyataan = 25");
                 System.out.println("5. Menjadi second choice = 50");
-                break;
+            break;
             }
 
             else if (pilihan == 3) {
@@ -134,6 +132,7 @@ public class Terminallogin {
                 System.out.println("pilihan anda tidak valid");
             }
     }    
+    }
 }
 
     
