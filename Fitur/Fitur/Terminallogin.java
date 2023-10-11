@@ -16,13 +16,11 @@ public class Terminallogin {
             unamemasuk = sc1.nextLine();
             System.out.print("Enter password: ");
             pwmasuk = sc1.nextLine();
-
-            if (unamemasuk.equals(uname)) {
-                if (pwmasuk.equals(pw)) {
-                 System.out.println("Login successful. Welcome, " + uname + "!");
-                isloggedin = true; 
-                }
-                
+            
+            if (unamemasuk.equals (uname) && pwmasuk.equals (pw)) {
+                System.out.println("Login successful. Welcome, " + uname + "!");
+                 mainmenu.main(args);
+             sc1.close();
             } else {
                 System.out.println("Login failed. Invalid username or password. Please try again.");
                 break;
@@ -135,11 +133,7 @@ public class Terminallogin {
             } else {
                 System.out.println("pilihan anda tidak valid");
             }
-            sc1.close();
-        }
-        return;
-    }
-
+    }    
 }
 
     
