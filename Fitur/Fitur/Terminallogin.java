@@ -1,4 +1,4 @@
-package Fitur;
+
 import java.util.Scanner;
 
 public class Terminallogin {
