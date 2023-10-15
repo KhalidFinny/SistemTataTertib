@@ -12,9 +12,7 @@ public class Laporankompen {
         System.out.print("Nama pelanggar: ");
         nama = input18.nextLine();
 
-        nama = "Rizal";
-
-        if (nama.equalsIgnoreCase(nama)) {
+        if (nama.equalsIgnoreCase("Rizal")) {
             System.out.printf("Apakah %s sedang Kompen? (Y/T) ", nama);
             stts = input18.nextLine();
 
