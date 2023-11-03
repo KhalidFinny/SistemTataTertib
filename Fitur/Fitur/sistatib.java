@@ -1,63 +1,103 @@
-
-
 import java.util.Scanner;
 
 public class sistatib {
 
     public static void main(String[] args) {
-        Scanner tatib = new Scanner(System.in);
-        
-        String nama, kelas, pelanggaran, prodi, jurusan, message;
-        int nim, point, pointsblm, pointssdh;
-        pointsblm = 0;
+        Scanner strtatib = new Scanner(System.in);
+        Scanner intgtatib = new Scanner(System.in);
+
+        int jumlahPelanggar;
 
         System.out.println("*****Silahkan masukkan data mahasiswa yang melanggar*****");
         System.out.println("                                                          ");
-       
-        System.out.print("Masukkan Nama Mahasiswa : ");
-        nama = tatib.nextLine();
 
-        System.out.print("Masukkan Kelas : ");
-        kelas = tatib.nextLine();
+        System.out.print("Masukkan banyak pelanggar: ");
+        jumlahPelanggar = intgtatib.nextInt();
 
-        System.out.print("Masukkan NIM : ");
-        nim = tatib.nextInt();
-        tatib.nextLine();
+        String nama[] = new String[jumlahPelanggar];
+        String kelas[] = new String[jumlahPelanggar];
+        String nim[] = new String[jumlahPelanggar];
+        String jurusan[] = new String[jumlahPelanggar];
+        String prodi[] = new String[jumlahPelanggar];
+        String pelanggaran[] = new String[jumlahPelanggar];
+        String tingkat[] = new String[jumlahPelanggar];
+        int jam[] = new int[jumlahPelanggar];
 
-        System.out.print("Masukkan Asal Prodi : ");
-        prodi = tatib.nextLine();
+        for (int i = 0; i < jumlahPelanggar; i++) {
 
-        System.out.print("Masukkan Asal Jurusan : ");
-        jurusan = tatib.nextLine();
+            System.out.println("Pelanggar ke- " + (i + 1));
 
-        System.out.print("Masukkan Jenis Pelanggaran : ");
-        pelanggaran = tatib.nextLine();
+            System.out.print("Nama        : ");
+            nama[i] = strtatib.next();
 
-        System.out.print("Masukkan Point yang Diterima : ");
-        point = tatib.nextInt();
-        tatib.close();
+            System.out.print("Kelas       : ");
+            kelas[i] = strtatib.next();
 
-        pointssdh = point + pointsblm;
+            System.out.print("NIM         : ");
+            nim[i] = strtatib.next();
 
-        if (point > 0 && point <= 10) {
-            message = "Selamat anda hanya mendapatkan kompensasi";
-        } else if (point > 10 && point <= 20) {
-            message = "Sayangnya anda mendapatkan hukuman kecil";
-        } else if (point > 20 && point <= 30) {
-            message = "Sayangnya anda mendapatkan hukuman BESAR";
-        } else if (point > 30 && point <= 40) {
-            message = "Sayang sekali anda mendapatkan hukuman BERAT";
-        } else {
-            message = "Waah dikeluarkan, better luck next time";
+            System.out.print("Prodi       : ");
+            prodi[i] = strtatib.next();
+
+            System.out.print("Jurusan     : ");
+            jurusan[i] = strtatib.next();
+
+            System.out.print("Pelanggaran : ");
+            pelanggaran[i] = strtatib.next();
+
+            if (pelanggaran[i].equalsIgnoreCase("Telat")) {
+
+                System.out.print("Berapa jam? ");
+                jam[i] = intgtatib.nextInt();
+
+            } else {
+                System.out.print("Tingkat  : ");
+                tingkat[i] = strtatib.next();
+            }
+
+            System.out.println("Apakah ingin dicetak? (y/n)");
+            String pemilihan = strtatib.next();
+
+            if (pemilihan.equalsIgnoreCase("Y")) {
+                System.out.println("Data telah ditambahkan!");
+                System.out.println("                       ");
+                System.out.println("Pelanggar ke- " + (i + 1));
+                System.out.println("Nama        : " + nama[i]);
+                System.out.println("kelas       : " + kelas[i]);
+                System.out.println("NIM         : " + nim[i]);
+                System.out.println("Prodi       : " + prodi[i]);
+                System.out.println("Jurusan     : " + jurusan[i]);
+                System.out.println("Pelanggaran : " + pelanggaran[i]);
+
+                if (pelanggaran[i].equalsIgnoreCase("Telat")) {
+                    System.out.println("Berapa jam : " + jam[i]);
+                } else {
+                    System.out.println("Tingkat berapa: " + tingkat[i]);
+
+                    if (tingkat[i].equalsIgnoreCase("V") || tingkat[i].equalsIgnoreCase("5")) {
+                        System.out.println("Anda mendapatkan teguran lisan dan harus membuat surat pernyataan tidak mengulangi perbuatan\r\n" + //
+                                "menggunakan materai dan di TTD anda dan Dosen DPA\r\n");
+
+                    } else if (tingkat[i].equalsIgnoreCase("IV") || tingkat[i].equalsIgnoreCase("4")) {
+                        System.out.println("Anda mendapatkan teguran  dan harus membuat surat pernyataan tidak mengulangi perbuatan\r\n" + //
+                                "menggunakan materai dan di TTD anda dan Dosen DPA\r\n");
+
+                    } else if (tingkat[i].equalsIgnoreCase("III") || tingkat[i].equalsIgnoreCase("3")) {
+                        System.out.println("1. Membuat surat pernyataan menggunakan materai dan di TTD anda dan dosen DPA\r\n" + //
+                                "2. Melakukan tugas khusus\r\n");
+
+                    } else if (tingkat[i].equalsIgnoreCase("II") || tingkat[i].equalsIgnoreCase("2")) {
+                        System.out.println("1. Anda harus melakukan penggantian kerugian \r\n" + //
+                                "2. Anda harus melakukan tugas pelayanan sosial\r\n" + //
+                                "3. Anda akan dikenakan nilai D pada matkul terkait");
+                    }
+                }
+            } else {
+                System.out.println("Data telah ditambahkan!");
+                break;
+            }
         }
-
-        System.out.println("Nama        : " + nama);
-        System.out.println("Kelas       : " + kelas);
-        System.out.println("NIM         : " + nim);
-        System.out.println("Prodi       : " + prodi);
-        System.out.println("Jurusan     : " + jurusan);
-        System.out.println("Pelanggaran : " + pelanggaran);
-        System.out.println("Point       : " + pointssdh);
-        System.out.println(message);
+        strtatib.close();
+        intgtatib.close();
     }
 }
