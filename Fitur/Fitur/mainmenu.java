@@ -33,120 +33,131 @@ public class mainmenu {
             System.out.println("===================================");
             System.out.print("Pilih menu yang diinginkan: ");
 
-                       pilihan = sc.nextInt();
+            pilihan = sc.nextInt();
 
             if (pilihan == 1) {
+                boolean isValid = false; // tambah variable untuk looping
+                while (!isValid) { // looping untuk kembali ke line 41
+                    System.out.println("*****Silahkan masukkan data mahasiswa yang melanggar*****");
+                    System.out.println("                                                          ");
 
-                System.out.println("*****Silahkan masukkan data mahasiswa yang melanggar*****");
-                System.out.println("                                                          ");
+                    System.out.print("Masukkan banyak pelanggar: ");
+                    jumlahPelanggar = intgtatib.nextInt();
 
-                System.out.print("Masukkan banyak pelanggar: ");
-                jumlahPelanggar = intgtatib.nextInt();
+                    for (int i = 0; i < jumlahPelanggar; i++) {
 
-                for (int i = 0; i < jumlahPelanggar; i++) {
-
-                    System.out.println("Pelanggar ke- " + (i + 1));
-
-                    System.out.print("Nama        : ");
-                    nama[i] = strtatib.next();
-
-                    System.out.print("Kelas       : ");
-                    kelas[i] = strtatib.next();
-
-                    System.out.print("NIM         : ");
-                    nim[i] = strtatib.next();
-
-                    System.out.print("Prodi       : ");
-                    prodi[i] = strtatib.next();
-
-                    System.out.print("Jurusan     : ");
-                    jurusan[i] = strtatib.next();
-
-                    System.out.print("Pelanggaran : ");
-                    pelanggaran[i] = strtatib.next();
-
-                    if (pelanggaran[i].equalsIgnoreCase("Telat")) {
-
-                        System.out.print("Berapa jam? ");
-                        jam[i] = intgtatib.nextInt();
-
-                    } else {
-                        System.out.print("Tingkat  : ");
-                        tingkat[i] = strtatib.next();
-                    }
-                    jumlahBiodata++;
-
-                    System.out.println("Apakah ingin dicetak? (y/n)");
-                    String pemilihan = strtatib.next();
-
-                    int totaljam = jam[i] * 2;
-
-                    if (pemilihan.equalsIgnoreCase("Y")) {
-                        System.out.println("Data telah ditambahkan!");
-                        System.out.println("                       ");
                         System.out.println("Pelanggar ke- " + (i + 1));
-                        System.out.println("Nama        : " + nama[i]);
-                        System.out.println("kelas       : " + kelas[i]);
-                        System.out.println("NIM         : " + nim[i]);
-                        System.out.println("Prodi       : " + prodi[i]);
-                        System.out.println("Jurusan     : " + jurusan[i]);
-                        System.out.println("Pelanggaran : " + pelanggaran[i]);
 
-                        if (pelanggaran[i].equalsIgnoreCase("Telat")) {
-                            System.out.println("Hukuman kompen jam : " + totaljam);
-                            System.out.println("                               ");
+                        System.out.print("Nama        : ");
+                        nama[jumlahBiodata] = strtatib.next();
+
+                        System.out.print("Kelas       : ");
+                        kelas[jumlahBiodata] = strtatib.next();
+
+                        System.out.print("NIM         : ");
+                        nim[jumlahBiodata] = strtatib.next();
+
+                        System.out.print("Prodi       : ");
+                        prodi[jumlahBiodata] = strtatib.next();
+
+                        System.out.print("Jurusan     : ");
+                        jurusan[jumlahBiodata] = strtatib.next();
+
+                        System.out.print("Pelanggaran : ");
+                        pelanggaran[jumlahBiodata] = strtatib.next();
+
+                        if (pelanggaran[jumlahBiodata].equalsIgnoreCase("Telat")) {
+
+                            System.out.print("Berapa jam? ");
+                            jam[jumlahBiodata] = intgtatib.nextInt();
 
                         } else {
-                            System.out.println("Tingkat berapa: " + tingkat[i]);
+                            System.out.print("Tingkat  : ");
+                            tingkat[jumlahBiodata] = strtatib.next();
+                        }
 
-                            if (tingkat[i].equalsIgnoreCase("V") || tingkat[i].equalsIgnoreCase("5")) {
-                                System.out.println(
-                                        "Anda mendapatkan teguran lisan dan harus membuat surat pernyataan tidak mengulangi perbuatan\r\n"
-                                                + //
-                                                "menggunakan materai dan di TTD anda dan Dosen DPA\r\n");
+                        System.out.println("Apakah ingin dicetak? (y/n)");
+                        String pemilihan = strtatib.next();
 
-                            } else if (tingkat[i].equalsIgnoreCase("IV") || tingkat[i].equalsIgnoreCase("4")) {
-                                System.out.println(
-                                        "Anda mendapatkan teguran  dan harus membuat surat pernyataan tidak mengulangi perbuatan\r\n"
-                                                + //
-                                                "menggunakan materai dan di TTD anda dan Dosen DPA\r\n");
+                        int totaljam = jam[jumlahBiodata] * 2;
 
-                            } else if (tingkat[i].equalsIgnoreCase("III") || tingkat[i].equalsIgnoreCase("3")) {
-                                System.out.println(
-                                        "1. Membuat surat pernyataan menggunakan materai dan di TTD anda dan dosen DPA\r\n"
-                                                + //
-                                                "2. Melakukan tugas khusus\r\n");
+                        if (pemilihan.equalsIgnoreCase("Y")) {
+                            System.out.println("Data telah ditambahkan!");
+                            System.out.println("                       ");
+                            System.out.println("Pelanggar ke- " + (i + 1));
+                            System.out.println("Nama        : " + nama[jumlahBiodata]);
+                            System.out.println("kelas       : " + kelas[jumlahBiodata]);
+                            System.out.println("NIM         : " + nim[jumlahBiodata]);
+                            System.out.println("Prodi       : " + prodi[jumlahBiodata]);
+                            System.out.println("Jurusan     : " + jurusan[jumlahBiodata]);
+                            System.out.println("Pelanggaran : " + pelanggaran[jumlahBiodata]);
 
-                            } else if (tingkat[i].equalsIgnoreCase("II") || tingkat[i].equalsIgnoreCase("2")) {
-                                System.out.println("1. Anda harus melakukan penggantian kerugian \r\n" + //
-                                        "2. Anda harus melakukan tugas pelayanan sosial\r\n" + //
-                                        "3. Anda akan dikenakan nilai D pada matkul terkait");
+                            if (pelanggaran[jumlahBiodata].equalsIgnoreCase("Telat")) {
+                                System.out.println("Hukuman kompen jam : " + totaljam);
+                                System.out.println("                               ");
+
                             } else {
-                                System.out.println("Data telah ditambahkan!");
-                                break;
+                                System.out.println("Tingkat berapa: " + tingkat[jumlahBiodata]);
+
+                                if (tingkat[jumlahBiodata].equalsIgnoreCase("V")
+                                        || tingkat[jumlahBiodata].equalsIgnoreCase("5")) {
+                                    System.out.println(
+                                            "Anda mendapatkan teguran lisan dan harus membuat surat pernyataan tidak mengulangi perbuatan\r\n"
+                                                    + //
+                                                    "menggunakan materai dan di TTD anda dan Dosen DPA\r\n");
+
+                                } else if (tingkat[jumlahBiodata].equalsIgnoreCase("IV")
+                                        || tingkat[jumlahBiodata].equalsIgnoreCase("4")) {
+                                    System.out.println(
+                                            "Anda mendapatkan teguran  dan harus membuat surat pernyataan tidak mengulangi perbuatan\r\n"
+                                                    + //
+                                                    "menggunakan materai dan di TTD anda dan Dosen DPA\r\n");
+
+                                } else if (tingkat[jumlahBiodata].equalsIgnoreCase("III")
+                                        || tingkat[jumlahBiodata].equalsIgnoreCase("3")) {
+                                    System.out.println(
+                                            "1. Membuat surat pernyataan menggunakan materai dan di TTD anda dan dosen DPA\r\n"
+                                                    + //
+                                                    "2. Melakukan tugas khusus\r\n");
+
+                                } else if (tingkat[jumlahBiodata].equalsIgnoreCase("II")
+                                        || tingkat[jumlahBiodata].equalsIgnoreCase("2")) {
+                                    System.out.println("1. Anda harus melakukan penggantian kerugian \r\n" + //
+                                            "2. Anda harus melakukan tugas pelayanan sosial\r\n" + //
+                                            "3. Anda akan dikenakan nilai D pada matkul terkait");
+                                } else {
+                                    System.out.println("Data telah ditambahkan!");
+                                    break;
+                                }
                             }
                         }
+                        jumlahBiodata++; // variable di ++ agar bertambah untuk menambah data baru dan menampilkan
+                                         // histori
+                    }
+                    System.out.println("Apakah ingin kembali ke Menu Utama? (y/n)"); // dipindah di dalam looping while
+                                                                                     // isValid
+                    String kembaliMenu = strtatib.next();
+                    if (kembaliMenu.equalsIgnoreCase("y")) {
+                        break;
+                    } else {
+                        continue;
                     }
                 }
-                 System.out.println("Apakah ingin kembali ke Menu Utama? (y/n)");
-                        String kembaliMenu = strtatib.next();
-                        if (kembaliMenu.equalsIgnoreCase("y")) {
-                        break; 
-                        }
-            }
-                
-                
-                        
-                    
-                
-             
-                
-
-            else if (pilihan == 2) {
+                continue;
+            } else if (pilihan == 2) {
                 System.out.println("List pelanggaran.");
-                System.out.println("1. Mencuri pisang = 2");
-                System.out.println("2. Melawan BEM = 5");
-                System.out.println("3. Salto tanpa izin = 10");
+                System.out.println("1. Berkomunikasi dengan tidak sopan, baik tertulis atau tidak tertulis\r\n" + //
+                        "kepada mahasiswa, dosen, karyawan, atau orang lain | tingkat: V");
+                System.out.println("                                                           ");
+                System.out.println("2. Berbusana tidak sopan dan tidak rapi. Yaitu antara lain adalah:\r\n" + //
+                        "berpakaian ketat, transparan, memakai t-shirt (baju kaos tidakberkerah), tank top, hipster,\r\n"
+                        + //
+                        "you can see, rok mini, backless, celana\r\n" + //
+                        "pendek, celana tiga per empat, legging, model celana atau baju koyak, sandal, sepatu sandal di lingkungan kampus \r\n" + //
+                        "|Tingkat: IV");
+                System.out.println("3. Mahasiswa Iaki-laki berambut tidak rapi, gondrong yaitu panjang\r\n" +//
+                                    "rambutnya melewati batas alis mata di bagian depan, telinga di\r\n"+//
+                                    "bagian samping atau menyentuh kerah baju di bagian leher | Tingkat: IV");
                 System.out.println("4. Lari dari kenyataan = 25");
                 System.out.println("5. Menjadi second choice = 50");
                 break;
@@ -163,34 +174,45 @@ public class mainmenu {
             }
 
             else if (pilihan == 4) {
-                System.out.println("History Pelanggar: ");
-                System.out.println("Data telah ditambahkan!");
-                if (jumlahBiodata == 0) {
-                    System.out.println("Belum ada data pelanggar");
-                } else {
-                    for (int i = 0; i < jumlahBiodata; i++) {
-                        System.out.println("                       ");
-                        System.out.println("Pelanggar ke- " + (i + 1));
-                        System.out.println("Nama        : " + nama[i]);
-                        System.out.println("kelas       : " + kelas[i]);
-                        System.out.println("NIM         : " + nim[i]);
-                        System.out.println("Prodi       : " + prodi[i]);
-                        System.out.println("Jurusan     : " + jurusan[i]);
-                        System.out.println("Pelanggaran : " + pelanggaran[i]);
+                boolean isHistori = false;
+                while (!isHistori) {
+                    System.out.println("History Pelanggar: ");
+                    System.out.println("Data telah ditambahkan!");
+                    if (jumlahBiodata == 0) {
+                        System.out.println("Belum ada data pelanggar");
+                    } else {
+                        for (int i = 0; i < jumlahBiodata; i++) {
+                            System.out.println("                       ");
+                            System.out.println("Pelanggar ke- " + (i + 1));
+                            System.out.println("Nama        : " + nama[i]);
+                            System.out.println("kelas       : " + kelas[i]);
+                            System.out.println("NIM         : " + nim[i]);
+                            System.out.println("Prodi       : " + prodi[i]);
+                            System.out.println("Jurusan     : " + jurusan[i]);
+                            System.out.println("Pelanggaran : " + pelanggaran[i]);
+
+                        }
                     }
+                    System.out.println("Apakah ingin kembali ke Menu Utama? (y/n)"); // dipindah di dalam looping while
+                                                                                     // isValid
+                    String kembaliMenu = strtatib.next();
+                    if (kembaliMenu.equalsIgnoreCase("y")) {
+                        break;
+                    } else {
+                        continue;
+                    }
+
                 }
+                continue;
 
-            }
-
-            if (pilihan == 0) {
+            } else if (pilihan == 0) { // digabung dengan yang atas agar jadi 1 IF
                 System.out.println("Terimakasih, kembali lagi");
                 break;
             } else {
                 System.out.println("pilihan anda tidak valid");
+                continue; // continue agar kembali ke display menu
             }
         }
         return;
     }
-    
-
 }
