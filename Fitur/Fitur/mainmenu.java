@@ -125,15 +125,21 @@ public class mainmenu {
                                 System.out.println("Data telah ditambahkan!");
                                 break;
                             }
+                        }
+                    }
                 }
                  System.out.println("Apakah ingin kembali ke Menu Utama? (y/n)");
                         String kembaliMenu = strtatib.next();
                         if (kembaliMenu.equalsIgnoreCase("y")) {
                         break; 
                         }
-                    }
-                }
-             }
+            }
+                
+                
+                        
+                    
+                
+             
                 
 
             else if (pilihan == 2) {
