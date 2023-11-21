@@ -339,12 +339,12 @@ public class SistemTataTertib {
                     continue;
                 }
 
-            } else if (pilihan == 0) { // digabung dengan yang atas agar jadi 1 IF
+            } else if (pilihan == 0) { 
                 System.out.println("Terimakasih, kembali lagi");
                 break;
             } else {
                 System.out.println("pilihan anda tidak valid");
-                continue; // continue agar kembali ke display menu
+                continue; 
             }
         }
         return;
