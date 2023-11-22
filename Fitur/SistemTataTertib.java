@@ -3,55 +3,137 @@ import java.util.Scanner;
 
 public class SistemTataTertib {
     public static void main(String[] args) {
+
         Scanner sc25 = new Scanner(System.in);
-        String tipePengguna;
+        String tipePengguna,inputUsername,kembaliMenuMhs,inputPassword;
+        int pilihanMahasiswa,opsiMahasiswa;
+        
         String mahasiswa[][] = {
-                { "mahasiswa1", "mahasiswa2", "mahasiswa3" },
-                { "password1", "password2", "password3" } };
+                { "rangga", "khalid", "khalid","damar","agil","austriech","rizal" },
+                { "password1", "password2", "password3", "password4", "password5", "password6", "password7" } };
         String admin[][] = {
                 { "admin1", "admin2", "admin3" },
                 { "password1", "password2", "password3" }
         };
 
         boolean isPengguna = false;
+        boolean loginMahasiswa = false;
+        boolean menuMahasiswa = false;
+        boolean hasilInput = false;
+        boolean exitMenu = false;
 
-        // input memilih login sebagai mahasiswa/admin
         do {
-            System.out.print("login sebagai (Mahasiswa/Admin) :");
+                    
+            System.out.print("\nlogin sebagai (Mahasiswa/Admin) :");
             tipePengguna = sc25.nextLine();
-            // pemilihan mahasiswa atau admin
-            if (tipePengguna.equalsIgnoreCase("mahasiswa")) {
-                System.out.println("-----Anda login sebagai mahasiswa-----\n");
-                // memasukkan username dan password mahasiswa
-                System.out.print(" masukkan username mahasiswa : ");
-                String inputUsername = sc25.next();
-                System.out.print(" masukkan password mahasiswa : ");
-                String inputPassword = sc25.next();
 
-                for (int i = 0; i < mahasiswa.length; i++) {
-                    if (inputUsername.equals(mahasiswa[0][i]) && inputPassword.equals(mahasiswa[1][i])) {
-                        System.out.println("\nselamat " + inputUsername + " telah berhasil login\n");
-                        isPengguna = true;
-                        break;
-                    } else {
-                        System.out.println("password atau username salah ");
-                        continue;
+            if (tipePengguna.equalsIgnoreCase("mahasiswa")) {                
+                System.out.println("\n===============MAHASISWA==============\n");               
+
+                do {
+                System.out.print(" masukkan username mahasiswa : ");
+                inputUsername = sc25.next();
+                System.out.print(" masukkan password mahasiswa : ");
+                inputPassword = sc25.next();
+                
+              
+                    for (int i = 0; i < mahasiswa[0].length; i++) {
+                        if (inputUsername.equals(mahasiswa[0][i]) && inputPassword.equals(mahasiswa[1][i])) {
+                            System.out.println("\nselamat " + inputUsername + " telah berhasil login\n");
+                            loginMahasiswa = true;
+                            hasilInput = true;
+                            break;
+                        }
                     }
-                }
+
+                        if (!hasilInput) {
+                            System.out.println("\n=====PASSWORD ATAU USERNAME SALAH=====");
+                            System.out.println("================ULANGI================\n");
+                            continue;
+                        }
+                    
+                 }while (!hasilInput);
+                        
+
+                 if (!loginMahasiswa);
+                
+                    do {
+                        System.out.println("======================================");
+                        System.out.println("============MENU MAHASISWA============");
+                        System.out.println("======================================");
+                        System.out.println("|1. Lihat profile                    |");
+                        System.out.println("|2. Riwayat pelanggar                |");
+                        System.out.println("|3. Status Tugas                     |");
+                        System.out.println("|4. opsi                             |");
+                        System.out.println("|0. logout                           |");
+                        System.out.println("======================================");
+
+                        System.out.print("Pilih menu yang diinginkan: ");
+                        pilihanMahasiswa = sc25.nextInt();
+                        sc25.nextLine();
+                        switch (pilihanMahasiswa) {
+                            case 1:
+                                System.out.println("Nama :" + inputUsername);
+                                // nim
+                                // kelas
+                                // jurusan
+                                // prodi
+                                System.out.println("kembali ke menu : (y)");
+                                kembaliMenuMhs = sc25.nextLine();
+                                
+                                if (kembaliMenuMhs.equalsIgnoreCase("y")) {
+                                    continue;
+                                }
+                                break;
+                            case 2: 
+                                System.out.println("======================================");
+                                System.out.println("==========RIWAYAT PELANGGARAN=========");
+                                System.out.println("======================================");
+                                //mengambil dari data master
+                                break;
+                            case 3: 
+                                System.out.println("======================================");
+                                System.out.println("==============STATUS TUGAS============");
+                                System.out.println("======================================");
+                                //mengambil dari data master
+                            case 4:
+                                System.out.println("======================================");
+                                System.out.println("==================OPSI================");
+                                System.out.println("======================================");
+                                System.out.println("|1.  Ganti Password                  |");
+                                System.out.println("|2.                                  |");
+                                System.out.println("|3.                                  |");
+                                System.out.println("|4.                                  |");
+                                System.out.println("|0.                                  |");
+                                System.out.println("======================================");
+                                System.out.println("Pilih opsi yang diinginkan: ");
+                                opsiMahasiswa = sc25.nextInt();
+                                //silahkan menambah opsi yang sekiranya bisa ditambahkan
+                            case 0: 
+                                break;
+                            default:
+                            System.out.println("\npilihan menu yang anda pilih tidak tersedia");
+                            System.out.println("silahkan ulangi lagi\n");
+                                break;
+                        }
+                    } while (pilihanMahasiswa != 0);
+
+                                      
 
             } else if (tipePengguna.equalsIgnoreCase("admin")) {
                 // memasukkan username dan password mahasiswa
                 System.out.println("-----Anda login sebagai Admin-----\n");
                 System.out.print(" masukkan username admin : ");
-                String inputUsername = sc25.next();
+                inputUsername = sc25.next();
                 System.out.print(" masukkan password admin : ");
-                String inputPassword = sc25.next();
+                inputPassword = sc25.next();
 
                 for (int i = 0; i < admin.length; i++) {
-                    if (inputUsername.equals(admin[0][i])&&inputPassword.equals(admin[1][i])) {
+                    if (inputUsername.equals(admin[0][i]) && inputPassword.equals(admin[1][i])) {
                         System.out.println("\nselamat " + inputUsername + " telah berhasil login\n");
                         isPengguna = true;
                         break;
+
                     }
                     if (!isPengguna) {
                         System.out.println("password atau username salah ");
@@ -60,10 +142,8 @@ public class SistemTataTertib {
                     }
                 }
             }
-            while (!isPengguna)
-                ;
-
-        } while (!isPengguna);
+            
+        while (isPengguna);
 
         Scanner sc = new Scanner(System.in);
         Scanner strtatib = new Scanner(System.in);
@@ -83,7 +163,7 @@ public class SistemTataTertib {
         // String tingkat[] = new String[100];
         // int jam[] = new int[100];
 
-        while (true) {
+        while (isPengguna) {
             System.out.println("===================================");
             System.out.println("============ Main Menu ============");
             System.out.println("===================================");
@@ -286,7 +366,7 @@ public class SistemTataTertib {
                 System.out.println("pilihan anda tidak valid");
                 continue; // continue agar kembali ke display menu
             }
-        }
+        }} while (!exitMenu);
         return;
 
     }
