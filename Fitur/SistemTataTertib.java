@@ -121,7 +121,7 @@ public class SistemTataTertib {
                                       
 
             } else if (tipePengguna.equalsIgnoreCase("admin")) {
-                // memasukkan username dan password mahasiswa
+
                 System.out.println("-----Anda login sebagai Admin-----\n");
                 System.out.print(" masukkan username admin : ");
                 inputUsername = sc25.next();
@@ -129,11 +129,10 @@ public class SistemTataTertib {
                 inputPassword = sc25.next();
 
                 for (int i = 0; i < admin.length; i++) {
-                    if (inputUsername.equals(admin[0][i]) && inputPassword.equals(admin[1][i])) {
+                    if (inputUsername.equals(admin[0][i])&&inputPassword.equals(admin[1][i])) {
                         System.out.println("\nselamat " + inputUsername + " telah berhasil login\n");
                         isPengguna = true;
                         break;
-
                     }
                     if (!isPengguna) {
                         System.out.println("password atau username salah ");
@@ -154,16 +153,8 @@ public class SistemTataTertib {
         String dataPelanggar[][] = new String[100][100];
         int dataPelanggarint[][] = new int[100][100];
 
-        // String nama[] = new String[] [100];
-        // String kelas[] = new String[100];
-        // String nim[] = new String[100];
-        // String jurusan[] = new String[100];
-        // String prodi[] = new String[100];
-        // String pelanggaran[] = new String[100];
-        // String tingkat[] = new String[100];
-        // int jam[] = new int[100];
-
         while (isPengguna) {
+
             System.out.println("===================================");
             System.out.println("============ Main Menu ============");
             System.out.println("===================================");
@@ -172,7 +163,7 @@ public class SistemTataTertib {
             System.out.println("|3. Tutorial jika telat           |");
             System.out.println("|4. Riwayat pelanggar             |");
             System.out.println("|5. Status Tugas                  |");
-            System.out.println("|6. Daftar tugas kompen           |");
+            System.out.println("|6. Data kehadiran                |");
             System.out.println("|0. Keluar dari program           |");
             System.out.println("===================================");
             System.out.print("Pilih menu yang diinginkan: ");
@@ -269,6 +260,14 @@ public class SistemTataTertib {
                                     System.out.println("1. Anda harus melakukan penggantian kerugian \r\n" + //
                                             "2. Anda harus melakukan tugas pelayanan sosial\r\n" + //
                                             "3. Anda akan dikenakan nilai D pada matkul terkait");
+
+                                } else if (dataPelanggar[6][jumlahBiodata].equalsIgnoreCase("I")
+                                        || dataPelanggar[6][jumlahBiodata].equalsIgnoreCase("1")) {
+                                    System.out.println(
+                                            "a. Dinonaktifkan (Cuti Akademik/ Terminal) selama dua semester\r\n"
+                                                    + //
+                                                    "b. Diberhentikan sebagai mahasiswa");
+
                                 } else {
                                     System.out.println("Data telah ditambahkan!");
                                     break;
@@ -358,13 +357,74 @@ public class SistemTataTertib {
 
                 }
                 continue;
+            } else if (pilihan == 5) {
 
-            } else if (pilihan == 0) { // digabung dengan yang atas agar jadi 1 IF
+                System.out.println("=============STATUS KOMPENSASI===============");
+                System.out.println("History Pelanggar: ");
+                if (jumlahBiodata == 0) {
+                    System.out.println("Belum ada data pelanggar");
+                } else {
+                    for (int i = 0; i < jumlahBiodata; i++) {
+                         int totaljam = dataPelanggarint[6][jumlahBiodata] * 2;
+                        System.out.println("                       ");
+                        System.out.println("Pelanggar ke- " + (i + 1));
+                        System.out.println("Nama        : " + dataPelanggar[0][i]);
+                        System.out.println("kelas       : " + dataPelanggar[1][i]);
+                        System.out.println("NIM         : " + dataPelanggar[2][i]);
+                        System.out.println("Prodi       : " + dataPelanggar[3][i]);
+                        System.out.println("Jurusan     : " + dataPelanggar[4][i]);
+                        System.out.println("Pelanggaran : " + dataPelanggar[5][i]);
+                        System.out.println("Hukuman kompen jam : " + totaljam);
+                        System.out.println("                               ");
+
+                    }
+                }
+                Scanner input18 = new Scanner(System.in);
+                int jam;
+                String stts;
+
+                System.out.print("Pilih pelanggar: ");
+                int pilihP = input18.nextInt();
+
+                if (pilihP >= 0 && pilihP < jumlahBiodata) {
+                    for (int j = 0; j < jumlahBiodata; j++) {
+                        System.out.printf("Apakah %s sedang Kompen? (Y/T) ", dataPelanggar[0][j]);
+                        stts = input18.next(); 
+
+                        if (stts.equalsIgnoreCase("Y")) {
+                            System.out.print("Berapa lama: ");
+                            jam = input18.nextInt();
+
+                            if (jam <= dataPelanggarint[6][j]) {
+                                System.out.printf("%s Status ongoing \n", dataPelanggar[0][j]);
+                            } else if (jam > dataPelanggarint[6][j]) {
+                                System.out.printf("%s Status sudah selesai ", dataPelanggar[0][j]);
+                            }
+
+                            int index = j;
+
+                        } else {
+                            System.out.println("Belum kompen");
+                            break;
+                        }
+                    }
+                } else {
+                    System.out.println("Pilihan tidak valid");
+                }
+                System.out.println("Apakah ingin kembali ke Menu Utama? (y/n)");
+                String kembaliMenu = strtatib.next();
+                if (kembaliMenu.equalsIgnoreCase("y")) {
+                    continue;
+                } else {
+                    continue;
+                }
+
+            } else if (pilihan == 0) { 
                 System.out.println("Terimakasih, kembali lagi");
                 break;
             } else {
                 System.out.println("pilihan anda tidak valid");
-                continue; // continue agar kembali ke display menu
+                continue; 
             }
         }} while (!exitMenu);
         return;
