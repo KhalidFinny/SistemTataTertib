@@ -63,7 +63,22 @@ public class SistemTataTertib {
                         
                  if (!loginMahasiswa)                
                     do {                                                    
+<<<<<<< HEAD
                         pilihanMahasiswa = showMahasiswaMenu(sc25);
+=======
+                        System.out.println("======================================");
+                        System.out.println("============MENU MAHASISWA============");
+                        System.out.println("======================================");
+                        System.out.println("|1. Lihat profile                    |");
+                        System.out.println("|2. Riwayat pelanggar                |");
+                        System.out.println("|3. Status Tugas                     |");
+                        System.out.println("|4. opsi                             |");
+                        System.out.println("|0. logout                           |");
+                        System.out.println("======================================");
+                        System.out.print("Pilih menu yang diinginkan: ");
+                        pilihanMahasiswa = sc25.nextInt();
+                        sc25.nextLine();
+>>>>>>> cd30c48ab8d67884971bbee602492a5e5645c5cc
                         
                         switch (pilihanMahasiswa) {
                             case 1:                                                                                                    
@@ -455,7 +470,11 @@ public class SistemTataTertib {
                 continue; 
             }
         }} while (!exitMenu);
+<<<<<<< HEAD
         
+=======
+        return;
+>>>>>>> cd30c48ab8d67884971bbee602492a5e5645c5cc
 
     }
     public static int showMahasiswaMenu(Scanner sc) {
