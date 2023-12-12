@@ -302,5 +302,45 @@ public class SistemKompen {
         System.out.println("");
         
     }
+    public static String tambahPelanggaran(Scanner strTatib) {
 
+        System.out.println("==================================================");
+        System.out.println("================TAMBAH PELANGGARAN================");
+        System.out.println("==================================================");
+        System.out.println("");
+
+        System.out.println("Masukkan ada berapa pelanggar: ");
+        String banyakPelanggar = strTatib.next();
+
+        for (int i = 0; i < banyakPelanggar; i++) {
+
+            System.out.print("Masukkan nama Pelanggar: ");
+            String pelanggar = strTatib.next();
+
+            System.out.println("Pelanggar ke " +( i+1 ));
+
+            for (int j = 0; j < mahasiswa[0].length; j++) {
+            if (pelanggar.equalsIgnoreCase(mahasiswa[0][j])) {
+                System.out.println("Data mahasiswa: ");
+                System.out.println("Nama : " + mahasiswa[0][j]);
+                System.out.println("NIM  : " + mahasiswa[2][j]);
+                System.out.println("Kelas: " + mahasiswa[3][j]);
+                System.out.println("Prodi: " + mahasiswa[4][j]);
+                System.out.println("Alfa : " + mahasiswa[5][j]);
+                System.out.print();
+
+            } else {
+                System.out.println("Mahasiswa dengan nama '" + pelanggar + "' tidak ditemukan.");
+                return null;
+            }
+            
+            
+        }
+
+
+        
+        
+    }
+
+}
 }
