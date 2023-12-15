@@ -67,6 +67,7 @@ public class SistemKompenFix {
             "Makan, atau minum di dalam ruang kuliah/ laboratorium/ bengkel.", // 4
             "Berkomunikasi dengan tidak sopan, baik tertulis atau tidak tertulis kepada mahasiswa, dosen, karyawan, atau orang lain.", // 5
             "Terlambat/Alfa." // 6
+<<<<<<< HEAD
     };
 
     static private String[] listKompen = {
@@ -89,6 +90,8 @@ public class SistemKompenFix {
             "3. Menginput nilai ujian",
             "4. Membuat banner kampus untuk event",
             "5. Membantu teknisi dalam melakukan tugas",
+=======
+>>>>>>> 347727d8abb31599fbda0cc93ab2fe717edff23d
     };
 
     public static void main(String[] args) {
@@ -362,6 +365,7 @@ public class SistemKompenFix {
                                             .println("Pelanggaran Mahasiswa : " + dataPelanggaran[i][indeksMahasiswa]);
                                 }
                             }
+<<<<<<< HEAD
                         }
                         System.out.println("\n1. edit pelanggaran");
                         System.out.println("2. Tambah pelanggaran");
@@ -589,17 +593,191 @@ public class SistemKompenFix {
                         if (!found) {
                             System.out.println("Mahasiswa dengan nama '" + pelanggar + "' tidak ditemukan.");
                             System.out.println(MahasiswaLogin[k][0]);
+=======
+>>>>>>> 347727d8abb31599fbda0cc93ab2fe717edff23d
                         }
+                        System.out.println("\n1. edit pelanggaran");
+                        System.out.println("2. Tambah pelanggaran");
+                        System.out.println("pilih : ");
+                        pilih = sc25.nextInt();
 
+<<<<<<< HEAD
                         System.out.print("\nKembali ke menu utama? (y/n) ");
                         String kembali = strTatib.next();
+=======
+                        switch (pilih) {
+                            case 1:
+                                int choicePelanggaran = 0;
+                                System.out.println("1. edit status tugas");
+                                System.out.println("2. hapus tugas");
+                                choicePelanggaran = sc25.nextInt();
+                                switch (choicePelanggaran) {
+                                    case 1:
+                                        boolean EditStatus = false;
+                                        int penghitung = 0;
+                                        System.out.println("=====Edit status tugas=====");
+                                        for (int i = 0, j = 0, l = 2; i < dataPelanggaran.length; i += 3, l += 3) {
+                                            if (dataPelanggaran[i][indeksMahasiswa] == null) {
+>>>>>>> 347727d8abb31599fbda0cc93ab2fe717edff23d
 
-                        if (kembali.equalsIgnoreCase("y")) {
-                            MenuAdmin();
+                                                found = true;
+                                            } else {
+                                                System.out.println("pelanggaran ke-" + (j + 1) + " "
+                                                        + dataPelanggaran[i][indeksMahasiswa]);
+                                                if (dataPelanggaran[i][indeksMahasiswa].equalsIgnoreCase("telat")
+                                                        || dataPelanggaran[i][indeksMahasiswa]
+                                                                .equalsIgnoreCase("terlambat")) {
+                                                    System.out.println(
+                                                            "Lama terlambat : " + waktuPelanggaran[j][indeksMahasiswa]);
+                                                }
+                                                System.out.println(
+                                                        "Status : " + dataPelanggaran[l][indeksMahasiswa] + "\n");
+                                                penghitung++;
+                                                j++;
+                                                EditStatus = true;
+                                            }
+                                        }
+                                        if (EditStatus) {
+                                            int Pilihedit = 0;
+                                            System.out.println("pilih Status pelanggaran untuk di edit ");
+                                            Pilihedit = sc25.nextInt();
+                                            sc25.nextLine();
+
+                                            if (Pilihedit == 1) {
+                                                System.out.print("Status menjadi :");
+                                                dataPelanggaran[2][indeksMahasiswa] = sc25.nextLine();
+                                            } else if (Pilihedit == 2) {
+                                                System.out.print("Status menjadi :");
+                                                dataPelanggaran[5][indeksMahasiswa] = sc25.nextLine();
+                                            } else if (Pilihedit == 3) {
+                                                System.out.print("Status menjadi :");
+                                                dataPelanggaran[8][indeksMahasiswa] = sc25.nextLine();
+                                            } else {
+                                                System.out.println("riwayat pelanggaran tidak tersedia");
+                                            }
+                                        }
+                                        break;
+                                    case 2:
+
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            case 2:
+                                System.out.println("| " + "1. " + pelanggaran[0]
+                                        + " (I)                                                     |");
+                                System.out.println("| " + "2. " + pelanggaran[1]
+                                        + " (II)                                                                    |");
+                                System.out.println("| " + "3. " + pelanggaran[2]
+                                        + " (III)                                                                                 |");
+                                System.out.println("| " + "4. " + pelanggaran[3]
+                                        + " (IV)                                                        |");
+                                System.out.println("| " + "5. " + pelanggaran[4] + " (V) |");
+                                System.out.println("| " + "6. " + pelanggaran[5]
+                                        + "                                                                                                             |");
+                                System.out.print("pilih jenis Pelanggaran: ");
+                                jenisPelanggaran = strTatib.next();
+
+                                if (jenisPelanggaran.equals("1")) {
+                                    System.out.println("| " + pelanggaran[0]
+                                            + " (I)                                                     |");
+                                    found = true;
+                                } else if (jenisPelanggaran.equals("2")) {
+                                    System.out.println("| " + pelanggaran[1]
+                                            + " (II)                                                                    |");
+                                    found = true;
+                                } else if (jenisPelanggaran.equals("3")) {
+                                    System.out.println("| " + pelanggaran[2]
+                                            + " (III)                                                                                 |");
+                                    found = true;
+                                } else if (jenisPelanggaran.equals("4")) {
+                                    System.out.println("| " + pelanggaran[3]
+                                            + " (IV)                                                        |");
+                                    found = true;
+                                } else if (jenisPelanggaran.equals("5")) {
+                                    System.out.println("| " + pelanggaran[4] + " (V) |");
+                                    found = true;
+                                } else if (jenisPelanggaran.equals("6")) {
+                                    System.out.println("| " + pelanggaran[5]
+                                            + "                                                                                                             |");
+                                    System.out.print("Berapa jam: ");
+                                    jamTelat = strTatib.nextInt();
+
+                                    if (waktuPelanggaran[0][indeksMahasiswa] == 0) {
+                                        waktuPelanggaran[0][indeksMahasiswa] = jamTelat;
+
+                                    } else if (waktuPelanggaran[1][indeksMahasiswa] == 0) {
+                                        waktuPelanggaran[1][indeksMahasiswa] = jamTelat;
+
+                                    } else {
+                                        waktuPelanggaran[2][indeksMahasiswa] = jamTelat;
+                                    }
+                                    found = true;
+                                    System.out.print("Konfirmasi pelanggaran? (y/n): ");
+                                    String cetak = strTatib.next();
+
+                                    if (cetak.equalsIgnoreCase("y")) {
+
+                                        angka = Integer.parseInt(jenisPelanggaran);
+                                        if (dataPelanggaran[0][indeksMahasiswa] == null) {
+                                            dataPelanggaran[0][indeksMahasiswa] = pelanggaran[angka - 1];
+                                        } else if (dataPelanggaran[3][indeksMahasiswa] == null) {
+                                            dataPelanggaran[3][indeksMahasiswa] = pelanggaran[angka - 1];
+                                        } else {
+                                            dataPelanggaran[6][indeksMahasiswa] = pelanggaran[angka - 1];
+                                        }
+
+                                        System.out.println("\nPelanggaran telah ditambahkan!\n");
+                                        System.out.println("Data mahasiswa: ");
+                                        System.out.println("Nama : " + MahasiswaLogin[indeksMahasiswa][0]);
+                                        System.out.println("NIM  : " + DataMahasiswa[indeksMahasiswa][0]);
+                                        System.out.println("Kelas: " + DataMahasiswa[indeksMahasiswa][1]);
+                                        System.out.println("Prodi: " + DataMahasiswa[indeksMahasiswa][2]);
+                                        System.out.println("Jenis Pelanggaran: " + jenisPelanggaran);
+
+                                        if (jenisPelanggaran.equals("6")) {
+                                            System.out.println("Pelanggaran " + pelanggaran[5]);
+                                            System.out.println("selama : " + jamTelat);
+                                        } else {
+                                            angka = Integer.parseInt(jenisPelanggaran);
+                                            System.out.println("pelanggaran : " + pelanggaran[angka - 1]);
+                                        }
+                                    } else {
+                                        System.out.println("Data tidak ditambahkan!");
+                                    }
+                                    break;
+
+                                } else {
+
+                                    break;
+                                }
+                                break;
+
+                            default:
+                                break;
                         }
+<<<<<<< HEAD
 
                     }
 
+=======
+                        if (!found) {
+                        System.out.println("Mahasiswa dengan nama '" + pelanggar + "' tidak ditemukan.");
+                        System.out.println(MahasiswaLogin[k][0]);
+                    }
+
+                    System.out.print("\nKembali ke menu utama? (y/n) ");
+                    String kembali = strTatib.next();
+
+                    if (kembali.equalsIgnoreCase("y")) {
+                        MenuAdmin();
+                    }
+
+
+                    }
+                    
+>>>>>>> 347727d8abb31599fbda0cc93ab2fe717edff23d
                 }
 
                 break;
@@ -611,11 +789,21 @@ public class SistemKompenFix {
                 System.out.println(
                         "=================================================================================================================================");
 
+<<<<<<< HEAD
                 System.out.println("| " + pelanggaran[0]);
                 System.out.println("| " + pelanggaran[1]);
                 System.out.println("| " + pelanggaran[2]);
                 System.out.println("| " + pelanggaran[3]);
                 System.out.println("| " + pelanggaran[4]);
+=======
+                for (int i = 0; i < pelanggaran.length; i++) {
+                    System.out.println("| " + pelanggaran[0]);
+                    System.out.println("| " + pelanggaran[1]);
+                    System.out.println("| " + pelanggaran[2]);
+                    System.out.println("| " + pelanggaran[3]);
+                    System.out.println("| " + pelanggaran[4]);
+                }
+>>>>>>> 347727d8abb31599fbda0cc93ab2fe717edff23d
 
                 System.out.println(
                         "==================================================================================================================================");
