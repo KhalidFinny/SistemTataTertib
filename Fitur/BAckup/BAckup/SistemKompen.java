@@ -3,79 +3,6 @@ package BAckup;
 import java.util.Scanner;
 
 public class SistemKompen {
-    public static void main(String[] args) {
-        Scanner strTatib = new Scanner(System.in);
-        Scanner intTatib = new Scanner(System.in);
-        SistemKompen sistemKompen = new SistemKompen();
-        int pilihanMahasiswa;
-        boolean multiLevel = true;
-
-        System.out.print("=======WELCOME TO KELOMPOK 1 KOMPEN SYSTEM=======\n");
-        System.out.println("                                               ");
-
-        while (multiLevel) {
-            System.out.println("===================================");
-            System.out.print("Login sebagai (Mahasiswa/Admin): ");
-            System.out.println("                                                 ");
-            String loginMulti = strTatib.next();
-
-            if (loginMulti.equalsIgnoreCase("mahasiswa")) {
-                if (true) {
-                    do {
-                        sistemKompen.loginMahasiswa(strTatib);
-                        pilihanMahasiswa = showMahasiswaMenu(intTatib);
-                        switch (pilihanMahasiswa) {
-                            case 1:
-
-                                break;
-                            case 2:
-
-                                break;
-                            case 3:
-
-                                break;
-                            case 4:
-
-                                break;
-
-                            case 0:
-                                System.out.println("Terima kasih telah menggunakan sistem kami");
-                                System.out.println("");
-                                continue;
-                            default:
-                                break;
-                        }
-                    } while (!true);
-
-                }
-
-            }
-            if (loginMulti.equalsIgnoreCase("admin")) {
-                if (true) {
-                    do {
-                        sistemKompen.loginAdmin(strTatib);
-                        int pilihanAdmin = showAdminMenu(intTatib);
-                        switch (pilihanAdmin) {
-                            case 1:
-                                sistemKompen.cariProfil(strTatib);
-                                break;
-                            case 2:
-                                SistemKompen.showListPelanggaran();
-                                break;
-                            case 3:
-                                sistemKompen.statusTugas(strTatib);
-                                break;
-                            case 4:
-                                sistemKompen.opsi(strTatib, intTatib);
-
-                        }
-                    } while (!true);
-                }
-            }
-        }
-
-    }
-
     static private String[][] mahasiswa = {
             { "Rangga", "Khalid", "Nero", "Damar", "Agil", "Austriech", "Rizal" }, // nama/username Mahasiswa
             { "password1", "password2", "password3", "password4", "password5", "password6", "password7" }, // password
@@ -83,11 +10,16 @@ public class SistemKompen {
             { "23720001", "23720002", "23720003", "23720004", "23720005", "23720006", "23720007" }, // NIM
             { "1C", "1C", "1C", "1C", "1C", "1C", "1C" }, // kelas
             { "Teknik informatika", "Teknik informatika", "Teknik informatika", "Teknik informatika",
-                    "Teknik informatika", "Teknik informatika", "Teknik informatika", }, // prodi
-            { "3", "4", "10", "0", "7", "10", "2" }, // alfa
+                    "Teknik informatika", "Teknik informatika", "Teknik informatika", } // prodi
+    };
+    
+    static private int[][] alfa = {
+         { 3, 4, 10, 0, 7, 10, 2 }
 
     };
-
+    
+    static private String [][] tipePelanggaran = new String[100][100];
+   
     static private String[][] admin = {
             { "admin1", "admin2", "admin3" },
             { "password1", "password2", "password3" }
@@ -113,6 +45,75 @@ public class SistemKompen {
         return pelanggaran;
     }
 
+    public int [][] getAlfa() {
+        return alfa;
+    }
+    public String[][] getTipePelanggaran() {
+        return tipePelanggaran;
+    }
+
+    public static void main(String[] args) {
+        Scanner strTatib = new Scanner(System.in);
+        Scanner intTatib = new Scanner(System.in);
+        SistemKompen sistemKompen = new SistemKompen();
+        int pilihanMahasiswa;
+        boolean multiLevel = true;
+
+        System.out.print("=======WELCOME TO KELOMPOK 1 KOMPEN SYSTEM=======\n\n");
+
+        while (multiLevel) {
+            System.out.println("===================================");
+            System.out.print("Login sebagai (Mahasiswa/Admin): ");
+            String loginMulti = strTatib.next();
+            System.out.println("===================================");
+            System.out.println();
+
+            if (loginMulti.equalsIgnoreCase("mahasiswa")) {
+                do {
+                    sistemKompen.loginMahasiswa(strTatib);
+                    pilihanMahasiswa = showMahasiswaMenu(intTatib);
+                    boolean continueMenu = true;
+
+                    do {
+                        switch (pilihanMahasiswa) {
+                            case 1:
+                                sistemKompen.cariProfil(strTatib);
+                                break;
+                            case 2:
+                                sistemKompen.historiPelanggaran(strTatib);
+                                break;
+                            case 3:
+                                sistemKompen.statusTugas(strTatib);
+                                break;
+                            case 4:
+                                sistemKompen.opsi(strTatib, intTatib);
+                                break;
+                            case 0:
+                                System.out.println("Terima kasih telah menggunakan sistem kami\n");
+                                continueMenu = false; // Update flag to exit the loop
+                                break;
+                            default:
+                                break;
+                        }
+                    
+                        if (continueMenu) {
+                            pilihanMahasiswa = showMahasiswaMenu(intTatib);
+                        }
+                    } while (continueMenu);
+                    
+
+            } while (true);
+
+           
+        }
+
+    }
+  { 
+  } 
+}
+
+ 
+
     public boolean loginMahasiswa(Scanner strTatib) {
         String usernamemhs, passwordmhs;
 
@@ -125,7 +126,8 @@ public class SistemKompen {
         System.out.print("Masukkan Password: ");
         passwordmhs = strTatib.next();
 
-        for (int i = 0; i < mahasiswa[0].length; i++) {
+        while (true) {
+             for (int i = 0; i < mahasiswa[0].length; i++) {
             if (usernamemhs.equals(mahasiswa[0][i]) && passwordmhs.equals(mahasiswa[1][i])) {
                 System.out.println("\nSelamat datang, " + usernamemhs + " silahkan di cek kompennya!\n");
                 return true; // Login berhasil
@@ -134,6 +136,7 @@ public class SistemKompen {
 
         System.out.println("\nUsername atau password salah. Silakan coba lagi.\n");
         return false; // Login gagal
+        }
     }
 
     public static int showMahasiswaMenu(Scanner intTatib) {
@@ -152,22 +155,19 @@ public class SistemKompen {
             pilihan = intTatib.nextInt();
             intTatib.nextLine();
 
-            if (pilihan >= 0 && pilihan <= 4) {
-                break; // Keluar dari loop jika pilihan menu valid
-            } else {
-                System.out.println("Pilihan tidak valid. Silakan pilih menu yang tersedia.");
-            }
+            return pilihan;
+
         }
-        return pilihan;
+        
     }
 
     public void cariProfil(Scanner strTatib) {
         System.out.println("==================================================");
         System.out.println("===============CEK PROFIL MAHASISWA===============");
-        System.out.println("==================================================");
         System.out.print("Masukkan nama yang ingin dicari: ");
         String namamhs = strTatib.next();
-
+        boolean found = false;
+    
         for (int i = 0; i < mahasiswa[0].length; i++) {
             if (namamhs.equalsIgnoreCase(mahasiswa[0][i])) {
                 System.out.println("Data mahasiswa: ");
@@ -175,23 +175,25 @@ public class SistemKompen {
                 System.out.println("NIM  : " + mahasiswa[2][i]);
                 System.out.println("Kelas: " + mahasiswa[3][i]);
                 System.out.println("Prodi: " + mahasiswa[4][i]);
-                System.out.println("Alfa : " + mahasiswa[5][i]);
-
-            } else {
-                System.out.println("Mahasiswa dengan nama '" + namamhs + "' tidak ditemukan.");
-                return;
+                System.out.println("Alfa : " + alfa[0][i]);
+                found = true;
+                break;
             }
-
-            System.out.print("Kembali ke menu utama? (y/n): ");
-            String kembali = strTatib.next();
-            if (kembali.equalsIgnoreCase("y")) {
-                showMahasiswaMenu(strTatib);
-            }
-
         }
-
+    
+        if (!found) {
+            System.out.println("Mahasiswa dengan nama '" + namamhs + "' tidak ditemukan.");
+        }
+    
+        System.out.print("Kembali ke menu utama? (y/n): ");
+        String kembali = strTatib.next();
+        if (kembali.equalsIgnoreCase("y")) {
+            showMahasiswaMenu(strTatib);
+        } else {
+            cariProfil(strTatib);
+        }
     }
-
+    
     public static void historiPelanggaran(Scanner strTatib) {
         System.out.println("======================================");
         System.out.println("==========RIWAYAT PELANGGARAN=========");
@@ -310,7 +312,7 @@ public class SistemKompen {
         System.out.println("");
 
         System.out.println("Masukkan ada berapa pelanggar: ");
-        String banyakPelanggar = strTatib.next();
+        int banyakPelanggar = strTatib.nextInt();
 
         for (int i = 0; i < banyakPelanggar; i++) {
 
@@ -327,7 +329,8 @@ public class SistemKompen {
                 System.out.println("Kelas: " + mahasiswa[3][j]);
                 System.out.println("Prodi: " + mahasiswa[4][j]);
                 System.out.println("Alfa : " + mahasiswa[5][j]);
-                System.out.print();
+                System.out.print("Pelanggaran: " + tipePelanggaran[6][j] );
+                
 
             } else {
                 System.out.println("Mahasiswa dengan nama '" + pelanggar + "' tidak ditemukan.");
@@ -341,6 +344,7 @@ public class SistemKompen {
         
         
     }
+        return null;
 
 }
 }
