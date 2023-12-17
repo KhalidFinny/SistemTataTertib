@@ -106,7 +106,7 @@ public class SistemKompenFix {
         System.out.println("| 3. exit                                                          |");
         System.out.println("===================================================================");
         System.out.println("");
-        System.out.print(" Masukkan pilihan: ");
+        System.out.print("Masukkan pilihan: ");
         pilihan = sc25.next();
 
         if (pilihan.equalsIgnoreCase("2")) {
@@ -125,7 +125,7 @@ public class SistemKompenFix {
                 MenuAdmin();
             }
         } else if (pilihan.equalsIgnoreCase("3")) {
-            System.out.println("Program selesai");
+            System.out.println("**Program selesai**");
             System.exit(0);
 
         } else {
