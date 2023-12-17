@@ -30,7 +30,7 @@ public class SistemKompenFix {
         // Set data untuk contoh lima pelanggaran
         dataPelanggaran[0] = new String[] { "merusak komputer lab", "terlambat", null, null, null, null, null, null };
         dataPelanggaran[1] = new String[] { "mengganti", "Membantu Admin", null, null, null, null, null, null };
-        dataPelanggaran[2] = new String[] { "selesai", "belum selesai", null, null, null, null, null, null };
+        dataPelanggaran[2] = new String[] { "selesai", "selesai", null, null, null, null, null, null };
        
         dataPelanggaran[3] = new String[] { null, "telat", null, null, null, null, null, null };
         dataPelanggaran[4] = new String[] { null, "membantu admin", null, null, null, null, null, null };
@@ -156,6 +156,7 @@ public class SistemKompenFix {
     static void MenuMahasiswa() {
         int selectMenuMHS;
         String choiceMHS;
+        
         System.out.println("\n======================================");
         System.out.println("============MENU MAHASISWA============");
         System.out.println("======================================");
@@ -193,7 +194,7 @@ public class SistemKompenFix {
                 System.out.println("======================================");
 
                 int totalPelanggaran = 0;
-
+                int HitungSmntr = 0;
                 for (int i = 0; i < dataPelanggaran.length; i += 3) {
                     if (dataPelanggaran[i][indeksMahasiswa] != null) {
                         totalPelanggaran++;
@@ -202,16 +203,27 @@ public class SistemKompenFix {
 
                 if (totalPelanggaran > 0) {
                     System.out.println("Riwayat Pelanggaran Mahasiswa " + MahasiswaLogin[indeksMahasiswa][0] + ":");
-
-                    for (int i = 0; i < dataPelanggaran.length; i += 3) {
+                    
+                    for (int i = 0 ,j = 0,q=2; i < dataPelanggaran.length; i += 3) {
                         if (dataPelanggaran[i][indeksMahasiswa] != null) {
                             System.out.println(
-                                    "Pelanggaran ke-" + ((i / 3) + 1) + ": " + dataPelanggaran[i][indeksMahasiswa]);
+                                    "\nPelanggaran ke-" + ((i / 3) + 1) + ": " + dataPelanggaran[i][indeksMahasiswa]);
 
                             if (dataPelanggaran[i][indeksMahasiswa].equalsIgnoreCase("terlambat")
                                     || dataPelanggaran[i][indeksMahasiswa].equalsIgnoreCase("telat")) {
                                 System.out
-                                        .println("Jam Terlambat: " + jumlahJam[indeksMahasiswa] + " jam");
+                                        .println("Jam Terlambat: " + waktuPelanggaran[j][indeksMahasiswa] + " jam");
+                                        if (dataPelanggaran[q][indeksMahasiswa].equalsIgnoreCase("aktif")) {
+                                            HitungSmntr+=waktuPelanggaran[j][indeksMahasiswa];
+                                        }
+                                        j++;
+                            }
+                            if (dataPelanggaran[i][indeksMahasiswa].equalsIgnoreCase("alfa")) {      
+                                System.out.println("Jam alfa: " + alfa[indeksMahasiswa] + " jam");
+                                        if (dataPelanggaran[q][indeksMahasiswa].equalsIgnoreCase("aktif")) {
+                                            HitungSmntr+=alfa[indeksMahasiswa];
+                                        }
+                                        j++;
                             }
                         }
                     }
@@ -237,19 +249,29 @@ public class SistemKompenFix {
                 boolean riwayatTugas = false; // Flag untuk mengecek apakah ada riwayat tugas
                 int nilaiSementara = 0;
 
-                for (int i = 0, j = 0, k = 1, l = 2; i < dataPelanggaran[0].length; i += 3, j++) {
+                for (int i = 0, j = 0, k = 1, l = 2,m = 0; i < dataPelanggaran.length; i += 3, j++,m++) {
                     if (dataPelanggaran[i][indeksMahasiswa] != null) {
                         System.out.println("Pelanggaran ke-" + (j + 1) + ": " + dataPelanggaran[i][indeksMahasiswa]);
                         System.out.println("Tugas: " + listKompen[indeksMahasiswa]);
                         System.out.println("Status: " + dataPelanggaran[l][indeksMahasiswa]);
 
+                        if (dataPelanggaran[i][indeksMahasiswa].equalsIgnoreCase("telat")||dataPelanggaran[i][indeksMahasiswa].equalsIgnoreCase("terlambat")) {
+                             if (dataPelanggaran[l][indeksMahasiswa].equalsIgnoreCase("aktif")) {
+                                nilaiSementara += waktuPelanggaran[m][indeksMahasiswa];
+                                
+                            }
+                        }
+                        if (dataPelanggaran[i][indeksMahasiswa].equalsIgnoreCase("alfa")) {
+                            if (dataPelanggaran[l][indeksMahasiswa].equalsIgnoreCase("aktif")) {
+                                nilaiSementara += alfa[indeksMahasiswa];
+                            }
+                        }
                         // Cek apakah pelanggaran termasuk telat atau terlambat
                         if (dataPelanggaran[i][indeksMahasiswa].equalsIgnoreCase(ListKompenJam[indeksMahasiswa])) {
                             System.out.println("Jam Terlambat: " + jumlahJam[indeksMahasiswa] + " jam");
                             System.out.println("Tugas: " + listKompen[indeksMahasiswa]);
-                            if (dataPelanggaran[l][indeksMahasiswa].equalsIgnoreCase("aktif")) {
-                                nilaiSementara += jumlahJam[indeksMahasiswa];
-                            }
+                        
+                           
                         }
 
                         System.out.println(); // Baris kosong antara pelanggaran
@@ -260,7 +282,7 @@ public class SistemKompenFix {
                     l += 3;
                 }
 
-                System.out.println("total jam terlambat / alfa : " + (jumlahJam[indeksMahasiswa] - jumlahBayar));
+                System.out.println("total jam terlambat / alfa : " + nilaiSementara*2);
                 // Menampilkan pesan jika mahasiswa tidak memiliki riwayat pelanggaran
                 if (!riwayatTugas) {
                     System.out.println("Mahasiswa tidak memiliki riwayat pelanggaran.");
@@ -361,7 +383,7 @@ public class SistemKompenFix {
                             System.out.println("Nama : " + MahasiswaLogin[indeksMahasiswa][0]);
                             System.out.println("NIM  : " + DataMahasiswa[indeksMahasiswa][0]);
                             System.out.println("Kelas: " + DataMahasiswa[indeksMahasiswa][1]);
-                            System.out.println("Prodi: " + DataMahasiswa[indeksMahasiswa][2]);
+                            System.out.println("Prodi: " + DataMahasiswa[indeksMahasiswa][2]+"\n");
                             found = true;
                             if (dataPelanggaran[0][indeksMahasiswa] == null) {
                                 System.out.println("tidak ada riwayat pelanggaran ");
@@ -399,7 +421,7 @@ public class SistemKompenFix {
                                             System.out.println("=====Edit status tugas=====");
                                             System.out.println("===========================\n");
 
-                                            for (int i = 0, j = 0, l = 1; i < dataPelanggaran.length; i += 3, l += 3) {
+                                            for (int i = 0, j = 0, l = 2,m = 1; i < dataPelanggaran.length; i += 3, l += 3,m+=3) {
                                                 if (dataPelanggaran[i][indeksMahasiswa] == null) {
 
                                                     found = true;
@@ -413,9 +435,15 @@ public class SistemKompenFix {
                                                         jumlahLama = i;
                                                         System.out.println(
                                                                 "Lama terlambat : "
-                                                                        + waktuPelanggaran[j][indeksMahasiswa]);
+                                                                        + waktuPelanggaran[j][indeksMahasiswa]+" jam");
                                                     }
+                                                    if (dataPelanggaran[i][indeksMahasiswa].equalsIgnoreCase("alfa")) {
+                                                        penghitung+=alfa[indeksMahasiswa];
+                                                        System.out.println("Lama terlambat : "+ alfa[indeksMahasiswa]+" jam");
+                                                    }
+                                                    System.out.println("tugas : "+dataPelanggaran[m][indeksMahasiswa]);
                                                     System.out.println(
+
                                                             "Status : " + dataPelanggaran[l][indeksMahasiswa] + "\n");
                                                     j++;
                                                     EditStatus = true;
@@ -455,11 +483,11 @@ public class SistemKompenFix {
                                             System.out.println("Total jam kompen: " + jumlahJam[indeksMahasiswa]);
                                             System.out.println("===================Kompen telat=======================");
                                             System.out.println(" ");
-                                            System.out.println(ListKompenJam[0]);
-                                            System.out.println(ListKompenJam[1]);
-                                            System.out.println(ListKompenJam[2]);
-                                            System.out.println(ListKompenJam[3]);
-                                            System.out.println(ListKompenJam[4]);
+                                            System.out.println("1. "+ListKompenJam[0]);
+                                            System.out.println("2. "+ListKompenJam[1]);
+                                            System.out.println("3. "+ListKompenJam[2]);
+                                            System.out.println("4. "+ListKompenJam[3]);
+                                            System.out.println("5. "+ListKompenJam[4]);
                                             System.out.println("=========================================================");
                                             
                                             System.out.print("Pilih tugas kompen: ");
@@ -471,6 +499,7 @@ public class SistemKompenFix {
 
                                             System.out.print("Berapa jam yang akan dibayar:");
                                             int bayar = sc25.nextInt();
+                                            sc25.nextLine();
                                             jumlahJam[indeksMahasiswa] = jumlahJam[indeksMahasiswa] - bayar;
                                             if (jumlahJam[indeksMahasiswa] > 0) {
                                                 System.out.println(
