@@ -527,10 +527,13 @@ public class SistemKompenFix {
                                     }
                                     break;
                                 case 2:
-                                System.out.println(" ");
-                                    System.out.println("==================================================================================================================================");
-                                    System.out.println("====================================================== Tambah Pelanggaran mahasiswa ==============================================");
-                                    System.out.println("==================================================================================================================================");
+                                    System.out.println(" ");
+                                    System.out.println(
+                                            "==================================================================================================================================");
+                                    System.out.println(
+                                            "====================================================== Tambah Pelanggaran mahasiswa ==============================================");
+                                    System.out.println(
+                                            "==================================================================================================================================");
 
                                     System.out.println("| " + "1. " + pelanggaran[0]
                                             + " (I)                                                     |");
@@ -637,7 +640,7 @@ public class SistemKompenFix {
                                         System.out.println("╰─────────────────────────────╯");
 
                                         if (jenisPelanggaran.equals("6")) {
-                                          
+
                                             angka = Integer.parseInt(jenisPelanggaran);
                                             int jumlahJamTelat = (jamTelat + alfa[indeksMahasiswa]);
                                             jumlahJam[indeksMahasiswa] = jumlahJamTelat * 2;
@@ -657,21 +660,28 @@ public class SistemKompenFix {
                                         } else {
                                             System.out.println("Data tidak ditambahkan!");
                                         }
+                                        for (int i = 0, j = 2; i < jumlahPelanggaran + 4; i += 3, j += 3) {
 
-                                        if (!found) {
-                                            System.out.println(
-                                                    "Mahasiswa dengan nama '" + pelanggar + "' tidak ditemukan.");
-                                            System.out.println(MahasiswaLogin[k][0]);
-                                        }
+                                            if (dataPelanggaran[i][indeksMahasiswa] == null) {
+                                                dataPelanggaran[i][indeksMahasiswa] = pelanggaran[angka - 1];
+                                                dataPelanggaran[j][indeksMahasiswa] = "aktif";
+                                            }
 
-                                        System.out.println("\n-------------------------------");
-                                        System.out.print(" Kembali ke Menu? (y/n): ");
-                                        String choice = sc25.next();
-                                        if (choice.equalsIgnoreCase("n")) {
-                                            loop = true;
-                                        } else {
-                                            MenuAdmin();
+                                            if (!found) {
+                                                System.out.println(
+                                                        "Mahasiswa dengan nama '" + pelanggar + "' tidak ditemukan.");
+                                                System.out.println(MahasiswaLogin[k][0]);
+                                            }
 
+                                            System.out.println("\n-------------------------------");
+                                            System.out.print(" Kembali ke Menu? (y/n): ");
+                                            String choice = sc25.next();
+                                            if (choice.equalsIgnoreCase("n")) {
+                                                loop = true;
+                                            } else {
+                                                MenuAdmin();
+
+                                            }
                                         }
                                     }
                             }
@@ -931,11 +941,8 @@ public class SistemKompenFix {
         if (angka >= 1 && angka <= 5) {
             dataIndex = (angka - 1) * 3;
         } else {
-            // Atau lakukan sesuai dengan aturan yang sesuai dengan kebutuhan
-            dataIndex = -1; // Misalnya, set nilai dataIndex ke -1 untuk menunjukkan kesalahan atau tidak
-                            // valid
+            dataIndex = -1;
         }
-
         if (dataIndex >= 0 && dataIndex < dataPelanggaran.length) {
             if (dataPelanggaran[dataIndex][indeksMahasiswa] == null) {
                 dataPelanggaran[dataIndex][indeksMahasiswa] = pelanggaran[angka - 1];
