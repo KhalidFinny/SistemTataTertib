@@ -600,14 +600,20 @@ public class SistemKompenFix {
                                     if (cetak.equalsIgnoreCase("y")) {
 
                                         angka = Integer.parseInt(jenisPelanggaran);
-                                        if (dataPelanggaran[0][indeksMahasiswa] == null) {
-                                            dataPelanggaran[0][indeksMahasiswa] = pelanggaran[angka - 1];
-                                        } else if (dataPelanggaran[3][indeksMahasiswa] == null) {
-                                            dataPelanggaran[3][indeksMahasiswa] = pelanggaran[angka - 1];
-                                        } else {
-                                            dataPelanggaran[6][indeksMahasiswa] = pelanggaran[angka - 1];
+                                        int jumlahPelanggaran =0;
+                                        for (int i = 0; i <dataPelanggaran.length; i+=3) {
+                                            if (dataPelanggaran[i][indeksMahasiswa]!=null) {
+                                                jumlahPelanggaran+=i;
+                                            }
                                         }
+                                        for (int i = 0,j= 2; i < jumlahPelanggaran+4; i+=3,j+=3) {
+                                                                                    
+                                        if (dataPelanggaran[i][indeksMahasiswa] == null) {
+                                            dataPelanggaran[i][indeksMahasiswa] = pelanggaran[angka - 1];
+                                            dataPelanggaran[j][indeksMahasiswa] = "aktif";
+                                        } 
 
+                                            }
                                         System.out.println("\nPelanggaran telah ditambahkan!\n");
                                         System.out.println("Data mahasiswa: ");
                                         System.out.println("Nama : " + MahasiswaLogin[indeksMahasiswa][0]);
